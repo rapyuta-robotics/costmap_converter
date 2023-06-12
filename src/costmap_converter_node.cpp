@@ -54,7 +54,7 @@ public:
   CostmapStandaloneConversion() : converter_loader_("costmap_converter", "costmap_converter::BaseCostmapToPolygons"), n_("~")
   {
       // load converter plugin from parameter server, otherwise set default
-      std::string converter_plugin = "costmap_converter::CostmapToPolygonsDBSMCCH";
+      std::string converter_plugin = "costmap_converter::CostmapToDynamicObstacles";
       n_.param("converter_plugin", converter_plugin, converter_plugin);
 
       try
@@ -69,10 +69,10 @@ public:
 
       ROS_INFO_STREAM("Standalone costmap converter:" << converter_plugin << " loaded.");
 
-      std::string costmap_topic = "/move_base/local_costmap/costmap";
+      std::string costmap_topic = "/move_base_flex/local_costmap/costmap";
       n_.param("costmap_topic", costmap_topic, costmap_topic);
 
-      std::string costmap_update_topic = "/move_base/local_costmap/costmap_updates";
+      std::string costmap_update_topic = "/move_base_flex/local_costmap/costmap_updates";
       n_.param("costmap_update_topic", costmap_update_topic, costmap_update_topic);
 
       std::string obstacles_topic = "costmap_obstacles";
@@ -282,6 +282,7 @@ private:
   ros::Subscriber costmap_sub_;
   ros::Subscriber costmap_update_sub_;
   ros::Publisher obstacle_pub_;
+  ros::Publisher obstacle_viz_pub_;
   ros::Publisher marker_pub_;
   ros::ServiceServer trigger_;
   bool enabled_;
