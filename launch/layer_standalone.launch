@@ -1,0 +1,8 @@
+<launch>
+<!-- launch the standalone_converter node with specified parameters -->
+    <rosparam file="$(find costmap_converter)/cfg/standalone.yaml" command="load" />
+    <node name="costmap_converter" 
+          pkg="costmap_converter" 
+          type="standalone_converter"
+          output="screen"/>
+</launch>

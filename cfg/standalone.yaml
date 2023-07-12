@@ -1,0 +1,25 @@
+costmap_converter: #parameters used by Leonie for the costmap_converter layer
+  alpha_fast: 0.9
+  alpha_slow: 0.05
+  beta: 0.9
+  dist_thresh: 5.0
+  dt: 0.1
+  filter_by_area: false
+  filter_by_circularity: false
+  filter_by_convexity: false
+  filter_by_inertia: false
+  max_allowed_skipped_frames: 4
+  max_area: 300
+  max_circularity: 1.0
+  max_convexity: 1.0
+  max_inertia_ratio: 1.0
+  max_occupancy_neighbors: 150
+  max_trace_length: 15
+  min_area: 0
+  min_circularity: 0.2
+  min_convexity: 0.0
+  min_distance_between_blobs: 5.0
+  min_inertia_ratio: 0.0
+  min_occupancy_probability: 200
+  min_sep_between_slow_and_fast_filter: 200
+  morph_size: 4
