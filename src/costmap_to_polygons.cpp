@@ -179,6 +179,7 @@ void CostmapToPolygonsDBSMCCH::setCostmap2D(costmap_2d::Costmap2D *costmap)
 void CostmapToPolygonsDBSMCCH::updateCostmap2D()
 {
       occupied_cells_.clear();
+      costmap_resolution_ = costmap_->getResolution();
       
       if (!costmap_->getMutex())
       {

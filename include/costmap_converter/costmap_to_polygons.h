@@ -308,6 +308,7 @@ class CostmapToPolygonsDBSMCCH : public BaseCostmapToPolygons
 
     Parameters parameter_;          //< active parameters throughout computation
     Parameters parameter_buffered_; //< the buffered parameters that are offered to dynamic reconfigure
+    double costmap_resolution_;     //< resolution of the costmap [m/cell]
     boost::mutex parameter_mutex_;  //!< Mutex that keeps track about the ownership of the shared polygon instance
    
   private:
