@@ -147,12 +147,14 @@ public:
 
   void costmapUpdateCallback(const map_msgs::OccupancyGridUpdateConstPtr& update)
   {
+    int origin_x = update->x;
+    int origin_y = update->y;
     unsigned int di = 0;
     for (unsigned int y = 0; y < update->height ; ++y)
     {
       for (unsigned int x = 0; x < update->width ; ++x)
       {
-        map_.setCost(x, y, update->data[di++] >= occupied_min_value_ ? 255 : 0 );
+        map_.setCost(x + origin_x, y + origin_y, update->data[di++] >= occupied_min_value_ ? 255 : 0);
       }
     }
 
