@@ -105,7 +105,7 @@ class CostmapToPolygonsDBSMCCH : public BaseCostmapToPolygons
      */
     struct Parameters
     {
-      Parameters() : max_distance_(0.4), min_pts_(2), max_pts_(30), min_keypoint_separation_(0.1) {}
+      Parameters() : max_distance_(0.4), min_pts_(2), max_pts_(30), min_keypoint_separation_(0.1), track_unknown_space_(false) {}
       // DBSCAN parameters
       double max_distance_; //!< Parameter for DB_Scan, maximum distance to neighbors [m]
       int min_pts_; //!< Parameter for DB_Scan: minimum number of points that define a cluster
@@ -113,6 +113,7 @@ class CostmapToPolygonsDBSMCCH : public BaseCostmapToPolygons
       
       // convex hull parameters
       double min_keypoint_separation_; //!< Clear keypoints of the convex polygon that are close to each other [distance in meters] (0: keep all)
+      bool track_unknown_space_; //!< If true, the unknown space is ignored as polygon
     };
     
     /**

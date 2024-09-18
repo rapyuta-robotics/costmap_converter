@@ -215,6 +215,10 @@ void CostmapToPolygonsDBSMCCH::updateCostmap2D()
           int value = costmap_->getCost(i,j);
           if(value >= costmap_2d::LETHAL_OBSTACLE)
           {
+            if (parameter_.track_unknown_space_ && value == costmap_2d::NO_INFORMATION)
+            {
+              continue;
+            }
             double x, y;
             costmap_->mapToWorld((unsigned int)i, (unsigned int)j, x, y);
             addPoint(x, y);
@@ -496,6 +500,7 @@ void CostmapToPolygonsDBSMCCH::reconfigureCB(CostmapToPolygonsDBSMCCHConfig& con
   parameter_buffered_.min_pts_ = config.cluster_min_pts;
   parameter_buffered_.max_pts_ = config.cluster_max_pts;
   parameter_buffered_.min_keypoint_separation_ = config.convex_hull_min_pt_separation;
+  parameter_buffered_.track_unknown_space_ = config.track_unknown_space;
 }
 
 }//end namespace costmap_converter
