@@ -25,8 +25,7 @@ void CostmapToBoundingBox::initialize(ros::NodeHandle nh)
   nh.param("cluster_max_distance", parameter_.max_distance_, 0.4);
   nh.param("cluster_min_pts", parameter_.min_pts_, 2);
   nh.param("cluster_max_pts", parameter_.max_pts_, 30);
-  // convex hull (only necessary if outlier filtering is enabled)
-  nh.param("convex_hull_min_pt_separation", parameter_.min_keypoint_separation_, 0.1);
+  nh.param("track_unknown_space", parameter_.track_unknown_space_, false);
   parameter_buffered_ = parameter_;
 
   // setup dynamic reconfigure
@@ -99,7 +98,7 @@ void CostmapToBoundingBox::reconfigureCB(CostmapToBoundingBoxConfig& config, uin
   parameter_buffered_.max_distance_ = config.cluster_max_distance;
   parameter_buffered_.min_pts_ = config.cluster_min_pts;
   parameter_buffered_.max_pts_ = config.cluster_max_pts;
-  parameter_buffered_.min_keypoint_separation_ = config.cluster_min_pts;
+  parameter_buffered_.track_unknown_space_ = config.track_unknown_space;
 }
 
 }  // end namespace costmap_converter
