@@ -215,6 +215,7 @@ void CostmapToPolygonsDBSMCCH::updateCostmap2D()
           int value = costmap_->getCost(i,j);
           if(value >= costmap_2d::LETHAL_OBSTACLE)
           {
+            // NO_INFORMATION (255) > LETHAL_OBSTACLE (254)
             if (parameter_.track_unknown_space_ && value == costmap_2d::NO_INFORMATION)
             {
               continue;
