@@ -193,6 +193,8 @@ void CostmapToPolygonsDBSMCCH::updateCostmap2D()
       
       costmap_2d::Costmap2D::mutex_t::scoped_lock lock(*costmap_->getMutex());
 
+      costmap_resolution_ = costmap_->getResolution();
+      
       // allocate neighbor lookup
       int cells_x = int(costmap_->getSizeInMetersX() / parameter_.max_distance_) + 1;
       int cells_y = int(costmap_->getSizeInMetersY() / parameter_.max_distance_) + 1;
